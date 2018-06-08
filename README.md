@@ -1,17 +1,17 @@
 ## go-ap
 
-A couple of structs and abstractions that allow you to easily construct, encode, decode and access valid ActivityPub objects.
+Some of structs and abstractions that allow you to easily construct, encode, decode and access valid ActivityPub objects.
 
 ###### Limitations
 
 - can't encode/decode Links that are represented as a slice of strings
 - can't render `null` as all field are tagged with ``json:"omitempty"``
 
-#### Installation
+### Installation
 
 `go get github.com/21stio/go-ap`
 
-####Usage
+### Encoding
 
 ```golang
 a := ap.NewActor(ap.ACTOR_PERSON)
@@ -50,6 +50,8 @@ if err != nil {
 println(string(encoded))
 
 ```
+
+#### Output
 
 ```json
 {
@@ -94,4 +96,39 @@ println(string(encoded))
       "href": "https://files.mastodon.social/accounts/headers/000/014/402/original/31c305f052363eaf.jpg"
    }
 }
+```
+
+### Decoding
+
+```golang
+a := ap.Actor{}
+
+err = json.Unmarshal(encoded, &a)
+if err != nil {
+	return
+}
+
+if a.Icon.IsLink() {
+	iconLink := a.Icon.GetLink()
+	println(iconLink.MediaType)
+	println(iconLink.Href)
+}
+
+switch a.Endpoints.SharedInbox.Type {
+case string(ap.LINK_LINK):
+	println(a.Endpoints.SharedInbox.GetLink().Href)
+case string(ap.COLLECTION_ORDERED):
+	oc := a.Endpoints.SharedInbox.GetOrderedCollection()
+
+	for _, item := range oc.OrderedItems {
+		println(item.GetLink().Href)
+	}
+}
+```
+
+#### Output
+
+```
+https://mastodon.social/inbox
+https://mastodon.social/super/inbox
 ```
