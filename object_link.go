@@ -39,6 +39,7 @@ func (ol ObjectLink) GetLink() (l link) {
 	l.nameTrait = ol.nameTrait
 	l.mediaTypeTrait = ol.mediaTypeTrait
 	l.previewTrait = ol.previewTrait
+
 	l.linkTrait = ol.linkTrait
 
 	return
@@ -60,36 +61,4 @@ func (ol ObjectLink) GetAnyObject() (ob anyObject) {
 	ob.tombstoneTrait = ol.tombstoneTrait
 
 	return
-}
-
-func (ol ObjectLink) IsBaseObject() (bool) {
-	return ol.GetAnyObject().IsBaseObject()
-}
-
-func (ol ObjectLink) GetBaseObject() (baseObject) {
-	return ol.GetAnyObject().GetBaseObject()
-}
-
-func (ol ObjectLink) IsPlace() (bool) {
-	return ol.GetAnyObject().IsPlace()
-}
-
-func (ol ObjectLink) GetPlace() (place) {
-	return ol.GetAnyObject().GetPlace()
-}
-
-func (ol ObjectLink) IsRelationship() (bool) {
-	return ol.GetAnyObject().IsRelationship()
-}
-
-func (ol ObjectLink) GetRelationship() (relationship) {
-	return ol.GetAnyObject().GetRelationship()
-}
-
-func (ol ObjectLink) IsTombstone() (bool) {
-	return ol.GetAnyObject().IsTombstone()
-}
-
-func (ol ObjectLink) GetTombstone() (tombstone) {
-	return ol.GetAnyObject().GetTombstone()
 }

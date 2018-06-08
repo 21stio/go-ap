@@ -6,6 +6,8 @@ import (
 	"time"
 )
 
+type PlaceLinkBag struct {}
+
 var hasTraitType = map[ObjectType]bool{OBJECT_PLACE: true, OBJECT_RELATIONSHIP: true, OBJECT_TOMBSTONE: true}
 
 type baseTrait struct {
@@ -13,7 +15,6 @@ type baseTrait struct {
 	AttributedTo *ObjectLink   `json:"attributedTo,omitempty"`
 	Audience     *ObjectLink   `json:"audience,omitempty"`
 	Content      string        `json:"content,omitempty"`
-	Context      *ObjectLink   `json:"context,omitempty"`
 
 	EndTime   *time.Time    `json:"endTime,omitempty"`
 	Generator *ObjectLink   `json:"generator,omitempty"`
@@ -23,11 +24,11 @@ type baseTrait struct {
 	Location  *PlaceLinkBag `json:"location,omitempty"`
 
 	Published  *time.Time         `json:"published,omitempty"`
-	Replies    *orderedCollection `json:"replies,omitempty"`
+	Replies    *OrderedCollection `json:"replies,omitempty"`
 	StartTime  *time.Time         `json:"startTime,omitempty"`
 	Summary    string             `json:"summary,omitempty"`
 	SummaryMap map[string]string  `json:"summaryMap,omitempty"`
-	Tag        *orderedCollection `json:"tag,omitempty"`
+	Tag        *OrderedCollection `json:"tag,omitempty"`
 	Updated    *time.Time         `json:"updated,omitempty"`
 	Url        *link              `json:"url,omitempty"`
 	To         []*ObjectLink      `json:"to,omitempty"`
