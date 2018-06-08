@@ -5,6 +5,7 @@ type MediaType string
 const (
 	MEDIA_TEXT_HTML MediaType = "text/html"
 	MEDIA_TEXT_JSON MediaType = "text/json"
+	MEDIA_TEXT_MARKDOWN MediaType = "text/markdown"
 	MEDIA_IMAGE_PNG MediaType = "image/png"
 	MEDIA_IMAGE_JPG MediaType = "image/jpg"
 )

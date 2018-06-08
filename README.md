@@ -1,12 +1,12 @@
 ## go-ap
 
-some structs and abstractions that allow you to easily construct, encode, decode and access ActivityPub objects
+easily construct, en/decode and access ActivityPub objects
 
 ###### Limitations
 
-- can't encode/decode Links that are represented as a slice of strings
+- can't en/decode Links represented as strings
 - can't render `null` as all field are tagged with ``json:"omitempty"``
-- durations aren't decoded as `xsd:duration`
+- durations aren't en/decoded as `xsd:duration`
 
 ### Installation
 
