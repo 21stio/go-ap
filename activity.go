@@ -1,7 +1,5 @@
 package ap
 
-import "encoding/json"
-
 type ActivityType string
 
 const (
@@ -38,15 +36,6 @@ const (
 
 func NewActivity(t ActivityType) (activity activity) {
 	activity.Type = string(t)
-
-	return
-}
-
-func NewActivityFromJson(j []byte) (activity activity, err error) {
-	err = json.Unmarshal(j, &activity)
-	if err != nil {
-		return
-	}
 
 	return
 }

@@ -1,11 +1,12 @@
 ## go-ap
 
-some structs and abstractions that allow you to easily construct, encode, decode and access valid ActivityPub objects
+some structs and abstractions that allow you to easily construct, encode, decode and access ActivityPub objects
 
 ###### Limitations
 
 - can't encode/decode Links that are represented as a slice of strings
 - can't render `null` as all field are tagged with ``json:"omitempty"``
+- durations aren't decoded as `xsd:duration`
 
 ### Installation
 
@@ -14,6 +15,10 @@ some structs and abstractions that allow you to easily construct, encode, decode
 ### Encoding
 
 ```golang
+import (
+	"github.com/21stio/go-ap"
+)
+
 a := ap.NewActor(ap.ACTOR_PERSON)
 a.Context = []string{
 	"https://www.w3.org/ns/activitystreams",
@@ -101,6 +106,10 @@ println(string(encoded))
 ### Decoding
 
 ```golang
+import (
+	"github.com/21stio/go-ap"
+)
+
 a := ap.Actor{}
 
 err = json.Unmarshal(encoded, &a)
