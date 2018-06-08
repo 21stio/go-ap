@@ -1,6 +1,6 @@
 ## go-ap
 
-Some of structs and abstractions that allow you to easily construct, encode, decode and access valid ActivityPub objects.
+some structs and abstractions that allow you to easily construct, encode, decode and access syntactically valid ActivityPub objects
 
 ###### Limitations
 
